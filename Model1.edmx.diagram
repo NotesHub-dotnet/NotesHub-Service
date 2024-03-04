@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="93a3e0a1e81142848156c60bfbca3267" Name="Diagram1" ZoomLevel="86">
+        <EntityTypeShape EntityType="noteshubModel.Document" Width="1.5" PointX="8.25" PointY="2.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="noteshubModel.Group" Width="1.5" PointX="0.75" PointY="2.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="noteshubModel.GroupUser" Width="1.5" PointX="3" PointY="2.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="noteshubModel.Post" Width="1.5" PointX="6" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="noteshubModel.User" Width="1.5" PointX="0.75" PointY="7.5" IsExpanded="true" />
+        <AssociationConnector Association="noteshubModel.FK__Document__post_i__693CA210" ManuallyRouted="false" />
+        <AssociationConnector Association="noteshubModel.FK__GroupUser__group__628FA481" ManuallyRouted="false" />
+        <AssociationConnector Association="noteshubModel.FK__Post__group_id__66603565" ManuallyRouted="false" />
+        <AssociationConnector Association="noteshubModel.FK__GroupUser__user___619B8048" ManuallyRouted="false" />
+        <AssociationConnector Association="noteshubModel.FK__Post__user_id__656C112C" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
