@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="93a3e0a1e81142848156c60bfbca3267" Name="Diagram1" ZoomLevel="86">
+      <Diagram DiagramId="93a3e0a1e81142848156c60bfbca3267" Name="Diagram1" ZoomLevel="107">
         <EntityTypeShape EntityType="noteshubModel.Document" Width="1.5" PointX="8.25" PointY="2.875" IsExpanded="true" />
         <EntityTypeShape EntityType="noteshubModel.Group" Width="1.5" PointX="0.75" PointY="2.75" IsExpanded="true" />
         <EntityTypeShape EntityType="noteshubModel.GroupUser" Width="1.5" PointX="3" PointY="2.875" IsExpanded="true" />
