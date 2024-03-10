@@ -33,6 +33,11 @@ namespace NotesHub_Service
         public int Signup(UserModel userData)
         {
             noteshubEntities db = new noteshubEntities();
+            bool isUserExists = db.Users.Any(user => user.username == userData.username);
+            if (isUserExists)
+            {
+                return 0;
+            }
             User newUser = new User();
             newUser.name = userData.name;
             newUser.email = userData.email;
@@ -45,11 +50,15 @@ namespace NotesHub_Service
 
             return newUser.id;
         }
-        public async Task<bool> Login(UserModel userData)
+        public async Task<int> Login(UserModel userData)
         {
             noteshubEntities db = new noteshubEntities();
-            bool isUserExists = await db.Users.AnyAsync(user => user.username == userData.username && user.password == userData.password);
-            return isUserExists;
+            User isUserExists = await db.Users.FirstOrDefaultAsync(user => user.username == userData.username && user.password == userData.password);
+            if(isUserExists == null)
+            {
+                return 0;
+            }
+            return isUserExists.id;
         }
 
         ////group
@@ -195,6 +204,7 @@ namespace NotesHub_Service
             model.created_at = postData.created_at;
             model.title = postData.title;
             List<Document> documents = db.Documents.Where(document => document.post_id == id).ToList();
+            model.Documents = new List<DocumentModel>();
             foreach (var item in documents)
             {
                 model.Documents.Add(new DocumentModel { fileBytes = FileService.GetFile(item.file_path), name = item.name });
@@ -231,6 +241,8 @@ namespace NotesHub_Service
                     document.name = item.name;
                     document.post_id = postId;
                     document.file_path = filePath;
+                    db.Documents.Add(document);
+                    db.SaveChanges();
                     i++;
                 }
             }
@@ -291,10 +303,12 @@ namespace NotesHub_Service
                 model.created_at = item.created_at;
                 model.title = item.title;
                 List<Document> documents = db.Documents.Where(document => document.post_id == item.id).ToList();
+                model.Documents = new List<DocumentModel>();
                 foreach (var item2 in documents)
                 {
                     model.Documents.Add(new DocumentModel { fileBytes = FileService.GetFile(item2.file_path), name = item2.name });
                 }
+                response.Add(model);
             }
             return response;
 
@@ -322,6 +336,7 @@ namespace NotesHub_Service
                 {
                     model.Documents.Add(new DocumentModel { fileBytes = FileService.GetFile(item2.file_path), name = item2.name });
                 }
+                response.Add(model);
             }
             return response;
         }

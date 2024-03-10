@@ -21,7 +21,7 @@ namespace NotesHub_Service
         int Signup(UserModel user);
 
         [OperationContract]
-        Task<bool> Login(UserModel user);
+        Task<int> Login(UserModel user);
 
 
         ////group
